@@ -3,117 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Gateway - Tema Biru</title>
+    <title>PAYMENT [ RIIWWXZ PAYMENT ]</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e0f7fa; /* Biru muda sebagai latar belakang */
-            color: #01579b; /* Biru gelap untuk teks */
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #007bff 0%, #ff6b6b 50%, #4ecdc4 100%); /* Gradient biru-merah-kehijauan untuk background keren */
+            background-attachment: fixed;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Overlay gelap untuk kontras */
+            backdrop-filter: blur(5px); /* Efek blur untuk kesan keren */
+            z-index: -1;
         }
         .container {
-            background-color: #ffffff;
-            border: 2px solid #0277bd; /* Biru sedang untuk border */
-            border-radius: 10px;
-            padding: 20px;
-            width: 400px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparan putih */
+            border: 3px solid #007bff; /* Border biru */
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
         h1 {
-            text-align: center;
-            color: #0277bd; /* Biru sedang untuk judul */
+            font-size: 2.5em;
+            color: #007bff; /* Biru untuk judul */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+        .payment-info {
+            margin-bottom: 20px;
         }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #0277bd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0277bd; /* Biru sedang untuk tombol */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #01579b; /* Biru gelap saat hover */
-        }
-        .error {
-            color: #d32f2f; /* Merah untuk error */
-            font-size: 14px;
+        .payment-info h2 {
+            color: #ff6b6b; /* Merah untuk sub-judul */
+            font-size: 1.5em;
             margin-bottom: 10px;
+        }
+        .account {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff; /* Border biru */
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .account h3 {
+            color: #007bff; /* Biru untuk nama bank */
+            margin: 0 0 5px 0;
+        }
+        .account p {
+            color: #333;
+            margin: 5px 0;
+        }
+        .account .number {
+            font-weight: bold;
+            color: #ff6b6b; /* Merah untuk nomor rekening */
+            font-size: 1.2em;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .highlight {
+            color: #ff6b6b; /* Merah untuk highlight */
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Payment Gateway</h1>
-        <form id="paymentForm">
-            <label for="amount">Jumlah Pembayaran (IDR):</label>
-            <input type="number" id="amount" placeholder="Masukkan jumlah" required>
-
-            <label for="cardNumber">Nomor Kartu:</label>
-            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-
-            <label for="expiry">Tanggal Kadaluarsa (MM/YY):</label>
-            <input type="text" id="expiry" placeholder="MM/YY" required>
-
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" placeholder="123" required>
-
-            <label for="method">Metode Pembayaran:</label>
-            <select id="method" required>
-                <option value="">Pilih Metode</option>
-                <option value="credit">Kartu Kredit</option>
-                <option value="debit">Kartu Debit</option>
-                <option value="ewallet">E-Wallet</option>
-            </select>
-
-            <div id="errorMessage" class="error"></div>
-            <button type="submit">Bayar Sekarang</button>
-        </form>
+        <h1>PAYMENT [ RIIWWXZ PAYMENT ]</h1>
+        <div class="payment-info">
+            <h2>Silakan Transfer ke Rekening Berikut</h2>
+            <p>Gunakan informasi di bawah ini untuk melakukan pembayaran. Pastikan nama rekening sesuai: <span class="highlight">DORI SAMSUL HUDORI</span>.</p>
+        </div>
+        
+        <div class="account">
+            <h3>BSI</h3>
+            <p class="number">7331392329</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="account">
+            <h3>DANA</h3>
+            <p class="number">083897762065</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="account">
+            <h3>GOPAY</h3>
+            <p class="number">082128399932</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="account">
+            <h3>SEABANK</h3>
+            <p class="number">901068812599</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="footer">
+            <p>Terima kasih telah menggunakan layanan kami. Konfirmasi pembayaran dapat dilakukan via email atau chat.</p>
+        </div>
     </div>
-
-    <script>
-        document.getElementById('paymentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const amount = document.getElementById('amount').value;
-            const cardNumber = document.getElementById('cardNumber').value;
-            const expiry = document.getElementById('expiry').value;
-            const cvv = document.getElementById('cvv').value;
-            const method = document.getElementById('method').value;
-            const errorMessage = document.getElementById('errorMessage');
-
-            // Validasi sederhana
-            if (!amount || !cardNumber || !expiry || !cvv || !method) {
-                errorMessage.textContent = 'Semua field harus diisi!';
-                return;
-            }
-            if (cardNumber.length < 16) {
-                errorMessage.textContent = 'Nomor kartu tidak valid!';
-                return;
-            }
-
-            // Simulasi pembayaran berhasil (dalam dunia nyata, kirim ke API gateway)
-            alert('Pembayaran sebesar IDR ' + amount + ' berhasil! (Simulasi)');
-            errorMessage.textContent = '';
-        });
-    </script>
 </body>
 </html>
