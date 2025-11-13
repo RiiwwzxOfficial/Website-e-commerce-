@@ -1,49 +1,119 @@
-let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
-let total = parseInt(localStorage.getItem('total')) || 0;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway - Tema Biru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Biru muda sebagai latar belakang */
+            color: #01579b; /* Biru gelap untuk teks */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border: 2px solid #0277bd; /* Biru sedang untuk border */
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0277bd; /* Biru sedang untuk judul */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #0277bd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0277bd; /* Biru sedang untuk tombol */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #01579b; /* Biru gelap saat hover */
+        }
+        .error {
+            color: #d32f2f; /* Merah untuk error */
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Gateway</h1>
+        <form id="paymentForm">
+            <label for="amount">Jumlah Pembayaran (IDR):</label>
+            <input type="number" id="amount" placeholder="Masukkan jumlah" required>
 
-function tambahKeKeranjang(nama, harga) {
-    keranjang.push({ nama, harga });
-    total += harga;
-    simpanKeStorage();
-    updateJumlahKeranjang();
-    alert(`${nama} ditambahkan ke keranjang!`);
-}
+            <label for="cardNumber">Nomor Kartu:</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
 
-function updateKeranjang() {
-    const daftar = document.getElementById('daftar-keranjang');
-    if (daftar) {
-        daftar.innerHTML = '';
-        keranjang.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.textContent = `${item.nama} - Rp ${item.harga}`;
-            const hapusBtn = document.createElement('button');
-            hapusBtn.textContent = 'Hapus';
-            hapusBtn.onclick = () => hapusDariKeranjang(index);
-            li.appendChild(hapusBtn);
-            daftar.appendChild(li);
+            <label for="expiry">Tanggal Kadaluarsa (MM/YY):</label>
+            <input type="text" id="expiry" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" placeholder="123" required>
+
+            <label for="method">Metode Pembayaran:</label>
+            <select id="method" required>
+                <option value="">Pilih Metode</option>
+                <option value="credit">Kartu Kredit</option>
+                <option value="debit">Kartu Debit</option>
+                <option value="ewallet">E-Wallet</option>
+            </select>
+
+            <div id="errorMessage" class="error"></div>
+            <button type="submit">Bayar Sekarang</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const amount = document.getElementById('amount').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const method = document.getElementById('method').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Validasi sederhana
+            if (!amount || !cardNumber || !expiry || !cvv || !method) {
+                errorMessage.textContent = 'Semua field harus diisi!';
+                return;
+            }
+            if (cardNumber.length < 16) {
+                errorMessage.textContent = 'Nomor kartu tidak valid!';
+                return;
+            }
+
+            // Simulasi pembayaran berhasil (dalam dunia nyata, kirim ke API gateway)
+            alert('Pembayaran sebesar IDR ' + amount + ' berhasil! (Simulasi)');
+            errorMessage.textContent = '';
         });
-        document.getElementById('total').textContent = total;
-    }
-    updateJumlahKeranjang();
-}
-
-function hapusDariKeranjang(index) {
-    total -= keranjang[index].harga;
-    keranjang.splice(index, 1);
-    simpanKeStorage();
-    updateKeranjang();
-}
-
-function updateJumlahKeranjang() {
-    const jumlah = keranjang.length;
-    const elems = document.querySelectorAll('#jumlah-keranjang');
-    elems.forEach(elem => elem.textContent = jumlah);
-}
-
-function simpanKeStorage() {
-    localStorage.setItem('keranjang', JSON.stringify(keranjang));
-    localStorage.setItem('total', total);
-}
-
-// Jalankan saat load
-updateJumlahKeranjang();
+    </script>
+</body>
+</html>
