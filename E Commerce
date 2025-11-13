@@ -1,0 +1,49 @@
+let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+let total = parseInt(localStorage.getItem('total')) || 0;
+
+function tambahKeKeranjang(nama, harga) {
+    keranjang.push({ nama, harga });
+    total += harga;
+    simpanKeStorage();
+    updateJumlahKeranjang();
+    alert(`${nama} ditambahkan ke keranjang!`);
+}
+
+function updateKeranjang() {
+    const daftar = document.getElementById('daftar-keranjang');
+    if (daftar) {
+        daftar.innerHTML = '';
+        keranjang.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${item.nama} - Rp ${item.harga}`;
+            const hapusBtn = document.createElement('button');
+            hapusBtn.textContent = 'Hapus';
+            hapusBtn.onclick = () => hapusDariKeranjang(index);
+            li.appendChild(hapusBtn);
+            daftar.appendChild(li);
+        });
+        document.getElementById('total').textContent = total;
+    }
+    updateJumlahKeranjang();
+}
+
+function hapusDariKeranjang(index) {
+    total -= keranjang[index].harga;
+    keranjang.splice(index, 1);
+    simpanKeStorage();
+    updateKeranjang();
+}
+
+function updateJumlahKeranjang() {
+    const jumlah = keranjang.length;
+    const elems = document.querySelectorAll('#jumlah-keranjang');
+    elems.forEach(elem => elem.textContent = jumlah);
+}
+
+function simpanKeStorage() {
+    localStorage.setItem('keranjang', JSON.stringify(keranjang));
+    localStorage.setItem('total', total);
+}
+
+// Jalankan saat load
+updateJumlahKeranjang();
