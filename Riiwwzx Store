@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIIWWXZ PAYMENT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .bank-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .bank-logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .bank-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .account-info {
+            margin-top: 15px;
+        }
+
+        .account-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .account-holder {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .copy-btn {
+            background: linear-gradient(to right, #3498db, #e74c3c);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Warna khusus untuk setiap metode pembayaran */
+        .bsi { border-left: 5px solid #3498db; }
+        .dana { border-left: 5px solid #e74c3c; }
+        .gopay { border-left: 5px solid #9b59b6; }
+        .seabank { border-left: 5px solid #2ecc71; }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RIIWWXZ PAYMENT</h1>
+            <p class="subtitle">Silakan pilih metode pembayaran yang tersedia</p>
+        </header>
+
+        <div class="payment-methods">
+            <!-- BSI -->
+            <div class="payment-card bsi">
+                <div class="bank-logo">
+                    <i>🏦</i>
+                    <div class="bank-name">Bank Syariah Indonesia (BSI)</div>
+                </div>
+                <div class="account-info">
+                    <div class="account-number">7331392329</div>
+                    <div class="account-holder">N/A: DORI SAMSUL HUDORI</div>
+                    <button class="copy-btn" data-account="7331392329">Salin Nomor Rekening</button>
+                </div>
+            </div>
+
+            <!-- DANA -->
+            <div class="payment-card dana">
+                <div class="bank-logo">
+                    <i>💜</i>
+                    <div class="bank-name">DANA</div>
+                </div>
+                <div class="account-info">
+                    <div class="account-number">083897762065</div>
+                    <div class="account-holder">N/A: DORI SAMSUL HUDORI</div>
+                    <button class="copy-btn" data-account="083897762065">Salin Nomor DANA</button>
+                </div>
+            </div>
+
+            <!-- GOPAY -->
+            <div class="payment-card gopay">
+                <div class="bank-logo">
+                    <i>💚</i>
+                    <div class="bank-name">GOPAY</div>
+                </div>
+                <div class="account-info">
+                    <div class="account-number">082128399932</div>
+                    <div class="account-holder">N/A: DORI SAMSUL HUDORI</div>
+                    <button class="copy-btn" data-account="082128399932">Salin Nomor GOPAY</button>
+                </div>
+            </div>
+
+            <!-- SEABANK -->
+            <div class="payment-card seabank">
+                <div class="bank-logo">
+                    <i>🌊</i>
+                    <div class="bank-name">SEABANK</div>
+                </div>
+                <div class="account-info">
+                    <div class="account-number">901068812599</div>
+                    <div class="account-holder">N/A: DORI SAMSUL HUDORI</div>
+                    <button class="copy-btn" data-account="901068812599">Salin Nomor Rekening</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>Instruksi Pembayaran</h2>
+            <ol>
+                <li>Pilih metode pembayaran yang diinginkan</li>
+                <li>Salin nomor rekening/akun dengan menekan tombol "Salin"</li>
+                <li>Transfer sesuai dengan jumlah yang diminta</li>
+                <li>Simpan bukti transfer sebagai konfirmasi</li>
+                <li>Konfirmasi pembayaran Anda kepada admin</li>
+            </ol>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 RIIWWXZ PAYMENT. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Fungsi untuk menyalin nomor rekening
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const accountNumber = this.getAttribute('data-account');
+                navigator.clipboard.writeText(accountNumber).then(() => {
+                    // Tampilkan pesan sukses
+                    const originalText = this.textContent;
+                    this.textContent = 'Tersalin!';
+                    this.style.background = 'linear-gradient(to right, #2ecc71, #27ae60)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = 'linear-gradient(to right, #3498db, #e74c3c)';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Gagal menyalin: ', err);
+                    alert('Gagal menyalin nomor. Silakan salin secara manual.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>        
+        <div class="account">
+            <h3>DANA</h3>
+            <p class="number">083897762065</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="account">
+            <h3>GOPAY</h3>
+            <p class="number">082128399932</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="account">
+            <h3>SEABANK</h3>
+            <p class="number">901068812599</p>
+            <p>N/A: DORI SAMSUL HUDORI</p>
+        </div>
+        
+        <div class="footer">
+            <p>Terima kasih telah menggunakan layanan kami. Konfirmasi pembayaran dapat dilakukan via email atau chat.</p>
+        </div>
+    </div>
+</body>
+</html>
